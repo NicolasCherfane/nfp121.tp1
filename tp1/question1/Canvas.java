@@ -22,7 +22,6 @@ public class Canvas {
     // shape objects in this project clean and simple for educational purposes.
 
     private static Canvas canvasSingleton;
-
     /**
      * Factory method to get the canvas singleton object.
      */
@@ -187,6 +186,7 @@ public class Canvas {
         public void paint(Graphics g) {
             g.drawImage(canvasImage, 0, 0, null);
         }
+        
     }
 
     /************************************************************************
@@ -210,3 +210,5 @@ public class Canvas {
     }
 
 }
+
+

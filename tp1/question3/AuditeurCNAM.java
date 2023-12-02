@@ -7,6 +7,7 @@ package question3;
  * @author à compléter
  * @see java.lang.String, java.lang.Math
  */
+import java.text.Normalizer;
 public class AuditeurCNAM {
     /** l'attribut nom de chaque auditeur. */
     private String nom;
@@ -45,7 +46,27 @@ public class AuditeurCNAM {
      *         homonymes...
      */
     public String login() {
-        return "";// à compléter
+        
+        String temp="";
+        for(int i=0;i<nom.length();i++){
+            if (String.valueOf(nom.charAt(i)).matches("[À-ÿ]+")){
+                temp=String.valueOf(nom.charAt(i));
+                temp = Normalizer.normalize(temp, Normalizer.Form.NFD);
+                temp = temp.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+                nom=nom.replace(String.valueOf(nom.charAt(i)),temp);
+            }//
+        }
+        
+        nom=nom.replaceAll("[^a-zA-Z]+","_");
+        prenom=prenom.replaceAll("[^a-zA-Z]", "_");
+        if(nom.length()>5){
+            nom=nom.substring(0,6)+"_"+prenom.substring(0,1);
+        }else{
+            nom=nom+"_"+prenom.substring(0,1);
+        }
+
+        return nom.toLowerCase();// à compléter
+        
     }
 
     /**
@@ -54,7 +75,7 @@ public class AuditeurCNAM {
      * @return son nom
      */
     public String nom() {
-        return null;// à compléter
+        return nom;// à compléter
     }
 
     /**
@@ -63,7 +84,7 @@ public class AuditeurCNAM {
      * @return son prénom
      */
     public String prenom() {
-        return null;// à compléter
+        return prenom;// à compléter
     }
 
     /**
@@ -72,7 +93,7 @@ public class AuditeurCNAM {
      * @return son matricule
      */
     public String matricule() {
-        return null;// à compléter
+        return matricule;// à compléter
     }
 
     /**

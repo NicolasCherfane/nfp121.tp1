@@ -10,7 +10,7 @@ import java.awt.geom.*;
  * @version 1.0 (15 July 2000)
  */
 
-public class Circle {
+public class Circle{
     private int diameter;
     private int xPosition;
     private int yPosition;
